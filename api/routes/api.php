@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:api'])->group(function () {
     Route::get('/profile', 'Api\AuthController@profile');
+    Route::post('/send-message', 'Api\MessageController@sendmessage');
+    Route::get('/my-messages', 'Api\MessageController@getmessages');
     Route::post('/logout', 'Api\AuthController@logout');
 });
-
+Route::post('/search-user', 'Api\MessageController@search');
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');

@@ -10,11 +10,13 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-    	$request->username = $request->username . '@eclipsed.in';
+    	//$request->username = $request->username . '@eclipsed.in';
 	    $validatedData = $request->validate([
 	    	'name' => 'required',
+            'email' => 'required|email',
 	    	'username' => 'required|unique:users',
-	    	'password' => 'required|confirmed'
+	    	'password' => 'required|confirmed',
+            'gender' => 'required'
     	]);
     	$validatedData['password'] = bcrypt($validatedData['password']);
     	//dd($validatedData);

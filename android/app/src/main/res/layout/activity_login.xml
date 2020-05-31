@@ -55,6 +55,7 @@
                     android:background="@color/textColor"
                     android:textColor="#ffffff"
                     android:textSize="15dp"
+                    android:onClick="loginButtonSubmit"
                     android:layout_marginTop="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
