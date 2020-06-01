@@ -43,7 +43,7 @@ class MessageController extends Controller
                 'users' => []
             ], 200);
         }
-        
+        // try now
         $user = User::where('username', 'LIKE', '%' . $request->username . '%')->get();
         return response()->json([
             'users' => $user
