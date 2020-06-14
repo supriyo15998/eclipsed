@@ -6,14 +6,19 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 
 import in.example.eclipsed.fragments.InboxFragment;
@@ -30,14 +35,20 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
         sessionManager = new SessionManager(this);
-
-        //starts here
-//        welcomeTxtView = findViewById(R.id.welcomeTxtView);
-//        welcomeUsername = findViewById(R.id.welcomeUsername);
-        //ends here
         bottomNavigationMenu = findViewById(R.id.bottomNavigation);
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                if(task.isSuccessful()) {
+                    Log.d("DashboardActivity", task.getResult().getToken());
+                } else {
+                    Log.e("DashboardActivity", task.getException().getMessage());
+                    task.getException().printStackTrace();
+                }
+            }
+        });
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new ProfileFragment()).commit();
 
@@ -49,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                 switch (menuItem.getItemId()) {
                     case R.id.nav_profile:
-                        selected = new ProfileFragment();
+                        selected = ProfileFragment.newInstance(true, sessionManager.getUserData());
                         break;
                     case R.id.inbox:
                         selected = new InboxFragment();
@@ -86,7 +97,7 @@ public class DashboardActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logout:
-                Toast.makeText(this, "Logout pressed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You're successfully logged out!", Toast.LENGTH_SHORT).show();
                 sessionManager.setIsLoggedIn(false);
                 sessionManager.setKeyAccessToken(null);
                 sessionManager.setUserData(null);

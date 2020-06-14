@@ -21,6 +21,7 @@ import java.util.List;
 
 import in.example.eclipsed.R;
 import in.example.eclipsed.adapters.UserAdapter;
+import in.example.eclipsed.adapters.UserListener;
 import in.example.eclipsed.models.GlobalRequest;
 import in.example.eclipsed.models.GlobalResponse;
 import in.example.eclipsed.models.User;
@@ -30,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements UserListener {
     private String TAG = "SearchFragment";
     SearchView searchView;
     APIService apiService;
@@ -45,7 +46,7 @@ public class SearchFragment extends Fragment {
         apiService = APIClient.getClient().create(APIService.class);
         searchRecyclerView = view.findViewById(R.id.searchRecyclerview);
         users = new ArrayList<>();
-        userAdapter = new UserAdapter(getActivity(),users);
+        userAdapter = new UserAdapter(getActivity(),users,this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         searchRecyclerView.setLayoutManager(layoutManager);
         searchRecyclerView.setAdapter(userAdapter);
@@ -80,5 +81,9 @@ public class SearchFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onSearchedUserClicked(User user) { getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,ProfileFragment.newInstance(false, user)).commit();
     }
 }

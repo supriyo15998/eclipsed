@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(TAG,String.valueOf(response.code()));
                     if (response.code() == 200)
                     {
+                        Log.d(TAG,new Gson().toJson(response.body()));
                         try {
                             JSONObject jsonObject = new JSONObject(new Gson().toJson(response.body()));
                             sessionManager.setKeyAccessToken(jsonObject.getString("access_token"));

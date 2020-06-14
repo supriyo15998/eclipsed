@@ -17,6 +17,17 @@ public class GlobalResponse {
     @SerializedName("users")
     private List<User> users;
 
+    @SerializedName("message")
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public List<User> getUsers() {
         return users;
     }

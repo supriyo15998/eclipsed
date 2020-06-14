@@ -1,6 +1,8 @@
 package in.example.eclipsed.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private String name;
     private String email;
@@ -8,6 +10,15 @@ public class User {
     private String username;
     private String password;
     private String password_confirmation;
+    private int messages_count;
+
+    public int getMessages_count() {
+        return messages_count;
+    }
+
+    public void setMessages_count(int messages_count) {
+        this.messages_count = messages_count;
+    }
 
     public int getId() {
         return id;

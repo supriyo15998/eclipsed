@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1042956328764",
+    "firebase_url": "https://eclipsed-62663.firebaseio.com",
+    "project_id": "eclipsed-62663",
+    "storage_bucket": "eclipsed-62663.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042956328764:android:3434514010abf5d7324839",
+        "android_client_info": {
+          "package_name": "in.example.eclipsed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042956328764-2886cff992e4crb0edudcbl1925sa2ve.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.example.eclipsed",
+            "certificate_hash": "ed9aed78e7f03afe6d1dbb476f3e76be591d2ead"
+          }
+        },
+        {
+          "client_id": "1042956328764-u3v836qac07cslonibvj6d2uk24hqr1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoSwt8CZq0qu2GXfpPqXYXzS3f3Vu7n8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042956328764-u3v836qac07cslonibvj6d2uk24hqr1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

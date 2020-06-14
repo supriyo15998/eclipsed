@@ -42,8 +42,9 @@ class AuthController extends Controller
     	else {
 	    	$accessToken = auth()->user()->createToken('authToken')->accessToken;
 	    	return response()->json([
-	    		'user' => auth()->user(),
-	    		'access_token' => $accessToken
+	    		'user' => User::withCount('messages')->where('id', auth()->user()->id)->firstOrFail(),
+                'access_token' => $accessToken,
+                
 	    	],200);
     	}
     }

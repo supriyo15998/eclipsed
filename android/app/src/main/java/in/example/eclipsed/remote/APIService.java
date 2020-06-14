@@ -28,4 +28,8 @@ public interface APIService {
     @Headers("Accept: application/json")
     Call<GlobalResponse> getUsers(@Body GlobalRequest request);
 
+    @POST("send-message")
+    @Headers("Accept: application/json")
+    Call<GlobalResponse> sendMessage(@Body GlobalRequest request);
+
 }
