@@ -1,7 +1,5 @@
 # client
 
-> Eclipsed client directory
-
 ## Build Setup
 
 ```bash

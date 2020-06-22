@@ -1,9 +1,19 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
   /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
+  /*
   ** Headers of the page
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
@@ -18,19 +28,21 @@ export default {
     ]
   },
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
   ** Global CSS
   */
   css: [
   ],
   /*
   ** Plugins to load before mounting the App
+  ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
   ],
+  /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
   /*
   ** Nuxt.js dev-modules
   */
@@ -42,40 +54,7 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
   ],
-  auth: {
-    redirect: {
-      login: '/auth/signin',
-      logout: '/',
-    },
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url: '/login',
-            method: 'post'
-          },
-          logout: {
-            url: '/logout',
-            method:'post'
-          },
-          user: {
-            url: '/api/user',
-            method: 'get',
-            propertyName: false
-          }
-        },
-        tokenRequired: false,
-        tokenType: false
-      }
-    },
-    cookie: {
-      options: {
-        secure: false
-      }
-    }
-  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -83,7 +62,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
+      dark: true,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -99,12 +78,8 @@ export default {
   },
   /*
   ** Build configuration
+  ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
   }
 }

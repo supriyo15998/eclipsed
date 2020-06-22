@@ -32,7 +32,6 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
       <v-spacer />
-
     </v-app-bar>
     <v-content>
       <v-container>
@@ -40,10 +39,10 @@
       </v-container>
     </v-content>
     <v-footer
-      :fixed="fixed"
+      :absolute="!fixed"
       app
     >
-      <span>&copy; Supriyo Das {{ new Date().getFullYear() }}</span>
+      <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -61,7 +60,11 @@ export default {
           title: 'Welcome',
           to: '/'
         },
-        
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Download App',
+          to: '/inspire'
+        }
       ],
       miniVariant: false,
       right: true,
