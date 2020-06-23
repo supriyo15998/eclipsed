@@ -7,13 +7,17 @@
         class="mb-5"
       >
       <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
-        <footer>
-          <small>
-            <em>&mdash;John Johnson</em>
-          </small>
-        </footer>
+        To receive messages, download eclipsed app now
       </blockquote>
+      <v-btn
+        large 
+        color="orange darken-1">
+        <v-icon large>mdi-arrow-down-bold-box-outline</v-icon>
+        Download App Now
+      </v-btn>
+      <footer>
+          <em>&copy;Designed and Developed by: Supriyo Das</em>
+      </footer>
     </v-flex>
   </v-layout>
 </template>

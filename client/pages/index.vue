@@ -22,11 +22,13 @@
             name="input-7-1"
             :label="`Type your anonymous message to ${user} here!`"
             :hint="`Type your anonymous message to ${user} here!`"
+            color="orange darken-1"
             v-model="messageBody"
         ></v-textarea>
           <a
             href="#"
             rel="noopener noreferrer"
+            style="text-decoration: none; border-bottom: 1px solid #FB8C00; color: #FB8C00"
           >
             Terms and Conditions
           </a>
@@ -34,13 +36,14 @@
           <a
             href="#"
             rel="noopener noreferrer"
+            style="text-decoration: none; border-bottom: 1px solid #FB8C00; color: #FB8C00"
           >
             Privacy Policy
           </a>
         </v-card-text>
         <v-card-actions>
           <v-btn
-            color="primary"
+            color="orange darken-1"
             block
             nuxt
             :loading="isLoading"
@@ -119,6 +122,7 @@ export default {
       })
       .catch(err => {
         this.isLoading = false
+        // this.response = err
         console.log(err)
       })
     }
